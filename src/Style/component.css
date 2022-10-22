@@ -5,7 +5,7 @@
     padding-bottom: 12px;
     padding-left: 10px;
     width: 1550px;
-    background-color: rgb(250, 229, 165);
+    background-color: rgb(255, 239, 206);
     Justify-content:center;
     position: fixed; 
     z-index: 3;
@@ -17,11 +17,16 @@ font-family : Verdana;
 color: black;
 
  
- padding-left: 69px;
- padding-right: 69px;
- padding-top: 8px;
- padding-bottom: 8px;
- border: 2mm ridge rgba(232, 179, 21, 0.6);
+ padding-left: 65px;
+ padding-right: 65px;
+ padding-top: 5px;
+ padding-bottom: 5px;
+ border: 2mm ridge rgba(228, 169, 7, 0.6);
+
+ color:rgb(145, 97, 14);
+ font-weight: bold;
+  
+    
 }
 
 .ruban_home{
@@ -56,4 +61,7 @@ text-align: center;
         color:rgb(247, 201, 64);
     }
 
-
+.caracteristic_grid2{
+    display: flex;
+    justify-content: space-around;
+}

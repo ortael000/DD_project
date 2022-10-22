@@ -1,0 +1,192 @@
+.weapon_table, .display_perso, .competence_table, .equipement_table, .passif_table, .competence_pratique_table {
+    margin: auto;
+    max-width: 1200px;
+}
+
+.caract_table {
+    margin: 10px;
+    margin-top: 25px;
+}
+
+.caract_table th {
+    padding: 2px;
+    background-color: rgb(58, 58, 131);
+    color: white;
+    font-size: 12px;
+}
+
+.caract_table td {
+padding: 2px;
+background-color: rgb(199, 199, 247);
+color: rgb(14, 7, 53);
+font-size: 14px;
+}
+
+.caract_table_title{
+background-color: rgb(43, 43, 116);
+padding: 2px;
+font-size: 20px;
+color: white;
+}
+
+.weapon_table th{
+padding: 2px;
+background-color: rgb(46, 96, 142);
+color: white;
+font-size: 15px;
+}
+
+.weapon_table td{
+padding: 2px;
+background-color: rgb(210, 219, 218);
+color: rgb(9, 82, 103);
+}
+
+.weapon_table_title{
+background-color: rgb(4, 60, 112);
+padding: 2px;
+font-size: 25px;
+color: white;
+}
+
+
+.description_competence {
+font-size: 14px;
+}
+
+.competence_table th{
+padding: 2px;
+background-color: rgb(13, 135, 118);
+color: white;
+font-size: 15px;
+}
+
+.competence_table td{
+padding: 2px;
+background-color: rgb(210, 219, 218);
+color: rgb(9, 82, 103); 
+}
+
+.competence_table_title {
+background-color: rgb(19, 116, 119);
+padding: 2px;
+font-size: 25px;
+color: white;
+}
+
+.equipement_table th{
+    padding: 2px;
+    background-color: rgb(30, 75, 153);
+    color: white;
+    font-size: 15px;   
+}
+
+.equipement_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(24, 60, 123);            
+}
+    
+.equipement_table_title {
+    background-color: rgb(24, 60, 123);
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+}
+
+.passif_table th{
+
+    padding: 2px;
+    background-color: rgb(111, 31, 66);
+    color: white;
+    font-size: 15px;
+        
+}
+
+.passif_table td{
+
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(111, 31, 66);
+            
+}
+    
+.passif_table_title {
+    background-color: rgb(97, 18, 52);
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+}
+
+.competence_pratique_table th{
+
+    padding: 2px;
+    background-color: rgb(84, 8, 132);
+    color: white;
+    font-size: 15px;
+        
+}
+
+.competence_pratique_table td{
+
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(84, 8, 132);
+            
+}
+    
+.competence_pratique_title {
+    background-color: rgb(65, 7, 100);
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+}
+
+.grid_contain_number {
+text-align: center;
+
+}
+
+.Inventory_table{
+    margin-bottom: 50px;
+}
+
+.Inventory_table th{
+
+    padding: 2px;
+    background-color: rgb(118, 82, 27);
+    color: white;
+    font-size: 15px;
+        
+}
+
+.Inventory_table td{
+
+    padding: 2px;
+    background-color: rgb(234, 224, 209);
+    color: rgb(132, 80, 8);
+    text-align: center;
+            
+}
+    
+.inventory_title {
+    background-color: rgb(81, 57, 25);
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+}
+
+.money_display_1{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.money_icone{
+    height: 35px;
+    margin-right: 20px;
+}
+
+.money_number{
+    height: 20px;
+    margin-bottom: 20px;
+}

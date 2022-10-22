@@ -1,0 +1,33 @@
+.titre_perso {
+    border: solid 2px #9c5224;
+    margin:auto;
+    width: 790px;
+    margin: 2px;
+    height: 130px;
+}
+
+.Title_border_1{
+    border: solid 5px #9c5224;
+    margin: 3px;
+    height: 115px;
+}
+
+.Title_border_2{
+    border: solid 2px #9c5224;
+    margin: 3px;
+    height: 99px;
+    padding: 3px;
+    text-align: center;
+}
+
+.character_name{
+font-size: 25px;
+font-weight: bold;
+color: #9d582e;
+}
+
+.character_description{
+    font-size: 15px;
+    color: #9d582e;
+    padding: 2px
+}

@@ -1,0 +1,15 @@
+
+
+.change_weapon_buttons, .change_equipment_buttons, .change_passif_buttons, .change_competence_buttons{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    width: 120px;
+    margin-top: 70px;
+    margin-bottom: 10px;
+}
+
+.change_character_button {
+    background-color: rgb(227, 227, 230);
+    height: 25px;
+    font-size: 12px;
+}

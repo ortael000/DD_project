@@ -1,4 +1,8 @@
 import './Style/App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import ReactDOM from "react-dom";
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import {Layout} from "./pages/layout.js"
@@ -9,6 +13,7 @@ import {Fight} from "./pages/fight.js"
 import {Character} from "./pages/character.js"
 import {World} from "./pages/world.js"
 import {Skill} from "./pages/skill.js"
+import {Admin} from "./pages/admin.js"
 
 function App() {
   return (
@@ -24,6 +29,7 @@ function App() {
           <Route path="character" element={<Character />} />
           <Route path="world" element={<World />} />
           <Route path="skill" element={<Skill />} />
+          <Route path="admin" element={<Admin />} />
           
         </Route>
       </Routes>

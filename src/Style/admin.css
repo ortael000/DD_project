@@ -1,0 +1,43 @@
+.admin_content {
+    display: grid;
+	grid-template-columns: repeat(1, 1fr);
+}
+
+.sql_input_div_1{
+margin-left: 20px;
+width: 1480px;
+display: flex;
+justify-content: center;
+}
+
+.sql_input {
+    width: 800px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+
+.table_display {
+    font-size: 10px;
+    overflow-x: scroll;
+    margin: 10px;
+}
+
+.table_display2 th {
+    padding: 2px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 10px;
+}
+
+.table_display2 td {
+    padding: 2px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    font-size: 10px;
+}
+
+.table_choice{
+    margin-left: 40px;
+    margin-right: 10px;
+}
