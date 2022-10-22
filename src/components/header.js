@@ -26,6 +26,7 @@ export function Ruban_to_pages () {
             <Link className='link_to_page ' to="/skill">Skills</Link>
             <Link className='link_to_page ' to="/object">Objects</Link>
             <Link className='link_to_page ' to="/world">The World</Link>
+            <Link className='link_to_page ' to="/admin">Admin</Link>
             
         </div>
     )

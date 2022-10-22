@@ -436,7 +436,7 @@ export function Change_money_Button ({inventory_table,SetInventoryTable,charact_
         };
         return (
             <React.Fragment>
-            <Button size="medium" className='add_money_button' variant="contained" onClick={handleClickOpen}>
+            <Button size="small" className='add_money_button' variant="contained" onClick={handleClickOpen}>
                 Change money
             </Button>
             <Dialog
