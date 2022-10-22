@@ -1,0 +1,36 @@
+.homepage_content {
+
+    background-color: rgb(235, 228, 189);
+    min-height: 1000px;
+    width: 1600px;
+
+}
+
+.homepage_textpart {
+    text-align: center;
+    width: 1600px;
+
+}
+
+/* https://stackoverflow.com/questions/38556704/css-better-style-heading-element */
+.homepage_subtitle1 h2{
+    font: 30px/32px 'Roboto', sans-serif;
+}
+
+.homepage_subtitle1 h2:before,
+.homepage_subtitle1 h2:after {
+  content: '';
+  width: 100%;
+  display: inline-block;
+  border-bottom: 1px solid;
+  height: 0;
+  vertical-align: middle;
+}
+.homepage_subtitle1 h2:before {
+  margin-left: -100%;
+  margin-right: 40px;
+}
+.homepage_subtitle1 h2:after {
+  margin-left: 40px;
+  margin-right: -100%;
+}
