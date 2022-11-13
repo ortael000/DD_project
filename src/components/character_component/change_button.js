@@ -68,8 +68,9 @@ export function Change_weapon ({base_data,setInputValue,setcharactValue}) {
 
 export function Change_equipment ({base_data,setInputValue,setcharactValue}) {
 
-    const table = ["armure_torse","armure_jambe","casque","brassard","botte","anneau1","anneau2","amulette"]
+    const table = ["armure_torse","armure_jambe","casque","brassard","botte","anneau1","anneau2","amulette","botte"]
     const equipementlist2 = trier_sur_nom(equipementlist);
+    
 
     if (base_data == null) {
         // {console.log("pas encore de donnée a exploiter")}
@@ -80,7 +81,7 @@ export function Change_equipment ({base_data,setInputValue,setcharactValue}) {
 
         return (
             <div className='change_equipment_buttons'>
-                {table.map((code) => (<Change_Character_Dialog base_data ={base_data} key={code} code={code} table = {filter_equipment (code, equipementlist2)} setcharactValue={setcharactValue} setInputValue={setInputValue} />))}
+                {table.map((code) => (<Change_Character_Dialog base_data ={base_data} key={code} code={code} table = {filter_equipment(code, equipementlist2)} setcharactValue={setcharactValue} setInputValue={setInputValue} />))}
             </div>
         )
     }
@@ -99,7 +100,7 @@ function filter_equipment (type, equipementlist) {
             equipment_filtered_table.push(equipementlist[i])
         }
     }
-    return (equipment_filtered_table)   
+    return (equipment_filtered_table);
 } 
 
 export function Change_passive ({base_data,setInputValue,setcharactValue}) {
@@ -263,11 +264,9 @@ export function Change_HP_Button ({charact_data,setInputValue,setcharactValue}) 
   const [value_added, setValueAdded] = React.useState(0);
 
   if (charact_data == null ) {
-      console.log("on ne lance pas change_HP_Button");
       return (<div></div>)
   }else{
 
-      console.log("on lance change_HP_Button");
       const charac_id = charact_data.char_id;
 
       let original_value = charact_data.current_pv;
@@ -350,11 +349,9 @@ export function Change_mana_Button ({charact_data,setInputValue,setcharactValue}
   const [value_added, setValueAdded] = React.useState(0);
 
   if (charact_data == null ) {
-      console.log("on ne lance pas change_HP_Button");
       return (<div></div>)
   }else{
-
-      console.log("on lance change_HP_Button");
+    
       const charac_id = charact_data.char_id;
 
       let original_value = charact_data.current_mana;

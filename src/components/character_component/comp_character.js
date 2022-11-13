@@ -9,6 +9,7 @@ import azaram_portrait from "../../Assets/azaram_portrait.png";
 import jean_claude_protrait from "../../Assets/jean_claude_portrait.png"
 import kokoro_portrait from "../../Assets/kokoro_portrait.png"
 import nemeia_portrait from "../../Assets/nemeia_portrait.png"
+import viktor_portrait from "../../Assets/viktor_portrait.png"
 
 import pv_icone from "../../Assets/pv_icone.png"
 import mana_icone from "../../Assets/mana_icone.png"
@@ -112,7 +113,6 @@ export function Perso_title ({data}) {
 
 
 }
-
 
 export function General_values1 ({data, charact_data, setInputValue, setcharactValue}) {
 
@@ -666,12 +666,15 @@ export function Image_Perso ({data}) {
             image = jean_claude_protrait;
         } else if (nom == "Azaram") {
              image = azaram_portrait;
+        } else if (nom == "Viktor") {
+            image = viktor_portrait;
         }
+        
 
         return ( 
             <div className='border_portrait_1'> 
                 <div className='border_portrait_2'>
-                    <img src = {image} className='image_perso'/>
+                    <img src = {image} alt = "image du personnage" className='image_perso'/>
                 </div>
             </div>
             )

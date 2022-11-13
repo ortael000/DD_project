@@ -1,0 +1,91 @@
+.Object_filter{
+    padding: 5px;
+}
+
+.Object_filter1{
+    padding: 10px;
+}
+
+.input_filter {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.object_display_table {
+    max-width: 1450px;
+    margin: 10px;
+}
+
+.arme_display_table {
+    max-width: 1450px;
+    margin: 10px;
+}
+
+.equipement_display_table {
+    max-width: 1450px;
+    margin: 10px;
+}
+
+.object_display_table th{
+    padding: 2px;
+    background-color: rgb(30, 75, 153);
+    color: white;
+    font-size: 15px;   
+}
+
+.object_display_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(24, 60, 123);            
+}
+    
+.object_display_table_title {
+    background-color: rgb(24, 60, 123);
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+}
+
+
+
+.arme_display_table th{
+    padding: 2px;
+    background-color: rgb(195, 122, 70);
+    color: white;
+    font-size: 15px;   
+}
+
+.arme_display_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(130, 36, 15);            
+}
+    
+.arme_display_table_title {
+    background-color: rgb(198, 92, 16);
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+}
+
+
+
+.equipement_display_table th{
+    padding: 2px;
+    background-color: rgb(75, 41, 186);
+    color: white;
+    font-size: 15px;   
+}
+
+.equipement_display_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(24, 60, 123);            
+}
+    
+.equipement_display_table_title {
+    background-color: rgb(35, 9, 110);
+    padding: 2px;
+    font-size: 25px;
+    color: white;
+}

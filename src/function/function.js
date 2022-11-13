@@ -2,7 +2,7 @@ import { armelist } from '../data/armes.js';
 import { equipementlist } from '../data/equipements.js';
 import { passiflist } from '../data/passifs.js';
 import { competencelist } from '../data/competence.js';
-import { get_charact} from './function_db.js'
+import { get_charact,modify_database} from './function_db.js'
 
 export function find_weapon(weaponid) {   // une fonction qui retourne un objet de la liste d'objet dans "../data/armes.js"
 
@@ -31,7 +31,7 @@ export function find_passif(passifid) { // une fonction qui retourne un objet de
     return (passif_object);
 }
 
-export function find_equipment(equipid) { // une fonction qui retourne un objet de la liste de competence passive dans ../data/passif.js
+export function find_equipment(equipid) { // une fonction qui retourne un objet de la liste de competence passive dans ../data/equipement.js
     let equipment_object = {};
 
     for (let i =0; i< equipementlist.length; i++) {
@@ -44,7 +44,7 @@ export function find_equipment(equipid) { // une fonction qui retourne un objet 
     return (equipment_object);
 }
 
-export function find_competence(compid) { // une fonction qui retourne un objet de la liste de competence passive dans ../data/passif.js
+export function find_competence(compid) { // une fonction qui retourne un objet de la liste de competence passive dans ../data/competence.js
     let competence_object = {};
 
     for (let i =0; i< competencelist.length; i++) {
@@ -214,18 +214,20 @@ export function calculate_character_values (data) {  // une fonction qui prend e
         arme3_final.carac_touch1 = find_caracteristic_modifier(modifier_caract,arme3_base.touch_carac1);
         arme3_final.carac_touch2 = find_caracteristic_modifier(modifier_caract,arme3_base.touch_carac2);
 
+
+
     // on calcule les degats min et max ainsi que le score de toucher des armes
         arme1_final.deg_min = Math.round(arme1_base.min_deg + (arme1_final.carac_deg1 +  arme1_final.carac_deg2)*arme1_base.min_modifier/2);
         arme1_final.deg_max = Math.round(arme1_base.max_deg + (arme1_final.carac_deg1 +  arme1_final.carac_deg2)*arme1_base.max_modifier/2);
-        arme1_final.toucher = Math.round((arme1_final.carac_touch1 +  arme1_final.carac_touch2)/2*arme1_base.touch_modifier);
+        arme1_final.toucher = Math.round((arme1_final.carac_touch1 +  arme1_final.carac_touch2)/2*arme1_base.touch_modifier) + find_passiv_touch_bonus (arme1_base.type,passif1,passif2,passif3,passif4);
 
         arme2_final.deg_min = Math.round(arme2_base.min_deg + (arme2_final.carac_deg1 +  arme2_final.carac_deg2)*arme2_base.min_modifier/2);
         arme2_final.deg_max = Math.round(arme2_base.max_deg + (arme2_final.carac_deg1 +  arme2_final.carac_deg2)*arme2_base.max_modifier/2);
-        arme2_final.toucher = Math.round((arme2_final.carac_touch1 +  arme2_final.carac_touch2)/2*arme2_base.touch_modifier);
+        arme2_final.toucher = Math.round((arme2_final.carac_touch1 +  arme2_final.carac_touch2)/2*arme2_base.touch_modifier) + find_passiv_touch_bonus (arme2_base.type,passif1,passif2,passif3,passif4);
 
         arme3_final.deg_min = Math.round(arme3_base.min_deg + (arme3_final.carac_deg1 +  arme3_final.carac_deg2)*arme3_base.min_modifier/2);
         arme3_final.deg_max = Math.round(arme3_base.max_deg + (arme3_final.carac_deg1 +  arme3_final.carac_deg2)*arme3_base.max_modifier/2);
-        arme3_final.toucher = Math.round((arme3_final.carac_touch1 +  arme3_final.carac_touch2)/2*arme3_base.touch_modifier);
+        arme3_final.toucher = Math.round((arme3_final.carac_touch1 +  arme3_final.carac_touch2)/2*arme3_base.touch_modifier) + find_passiv_touch_bonus (arme3_base.type,passif1,passif2,passif3,passif4);
 
 // On a finit de calculer les valeurs pour les armes et on passe aux competences
 //             ------- COMPETENCES --------
@@ -237,6 +239,11 @@ let competence_base4 = find_competence(data.competence4);
 let competence_base5 = find_competence(data.competence5);
 
 let competence_final1 = calculate_comp_value(modifier_caract,competence_base1,bonus_elementaire);
+console.log("On fait tourner calculate_comp_value avec modifier_carac competence_base1 et bonus_elementaire")
+console.log(modifier_caract)
+console.log(competence_base1)
+console.log(bonus_elementaire)
+console.log(competence_final1)
 let competence_final2 = calculate_comp_value(modifier_caract,competence_base2,bonus_elementaire);
 let competence_final3 = calculate_comp_value(modifier_caract,competence_base3,bonus_elementaire);
 let competence_final4 = calculate_comp_value(modifier_caract,competence_base4,bonus_elementaire);
@@ -283,6 +290,7 @@ const competence_pratique = {competence_vol:competence_vol, competence_pistage:c
 
 // on retourne ensuite les elements calculés
     const table_result = {
+        ID: data.char_id,
         base_caract: base_caract, 
         equip_caract: equip_caract, 
         passif_caract:passif_caract,
@@ -315,6 +323,8 @@ const competence_pratique = {competence_vol:competence_vol, competence_pistage:c
         passif_bonus_text:passif_bonus_text,
         competence_pratique:competence_pratique,
     };
+    console.log("on check les valeurs calculées")
+    console.log(table_result)
     return(table_result)
     }
     
@@ -386,7 +396,7 @@ function training_level_multiplier(niveau,class_passif) {   // a function that t
     return (passif_result);
 }
 
-function find_equipment_bonus (equipement) {  // take the equipment object as input and return a strin with the list of bonus different from 0
+export function find_equipment_bonus (equipement) {  // take the equipment object as input and return a strin with the list of bonus different from 0
 
     let bonus = "";
 
@@ -547,23 +557,7 @@ export async function Add_caracteristic (carac, base_data, setInputValue, calcul
     const sql = 'UPDATE character SET ' + carac +' = '+ (current_carac+1)+' WHERE char_id = '+ base_data.char_id+';'
     const charge = {instruction: sql,}
 
-    try {
-        const chargeUtile = JSON.stringify(charge);
-        
-        console.log(chargeUtile);
-        console.log(typeof chargeUtile);
-        await fetch("http://localhost:3001/", {
-            method: "POST",
-            dataType: 'json',
-            headers: { 'Accept': 'application/json',
-            'Content-Type': 'application/json' },
-            body: chargeUtile,
-            mode: 'cors'
-        });
-        
-    }catch (err) {
-        console.log(err);
-    }
+    modify_database (sql)
 
     const new_base_data= await get_charact(base_data.char_id);
     setInputValue(new_base_data);
@@ -594,4 +588,30 @@ export function trier_sur_nom (table) {
         return 0;
     })
     return (table);
-} 
+}
+
+export function trier_sur_initiative (table) { 
+
+    table.sort(function (a, b) {
+        
+        if (a.initiative > b.initiative) {
+            return -1;
+        }
+        if (b.initiative > a.initiative) {
+            return 1;
+        }
+        return 0;
+    })
+    return (table);
+}
+
+function find_passiv_touch_bonus (weapon_type,passive1,passive2,passive3,passive4) {  // a function that take into parameter the type of a weapon( "cac" or "distance")and the passives and return the touch bnus from the character passives
+    let bonus = 0;
+    if (weapon_type == "cac") {
+        bonus = passive1.toucher_cac + passive2.toucher_cac + passive3.toucher_cac + passive4.toucher_cac
+    } else if (weapon_type == "distance") {
+        bonus = passive1.toucher_distance + passive2.toucher_distance + passive3.toucher_distance + passive4.toucher_distance
+    }
+
+    return (bonus)
+}

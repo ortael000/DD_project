@@ -19,18 +19,21 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import { SignalCellularNullOutlined } from '@mui/icons-material';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+import { Input } from '@mui/material';
 
 import copper_coin_icone from "../../Assets/copper_coin_icone.png"
 import silver_coin_icone from "../../Assets/silver_coin_icone.png"
 import gold_coin_icone from "../../Assets/gold_coin_icone.png"
 
-import { armelist } from '../../data/armes.js';
-import { equipementlist } from '../../data/equipements.js';
+import {armelist } from '../../data/armes.js';
+import {equipementlist } from '../../data/equipements.js';
 import {objectlist} from '../../data/objet.js'
 import {trier_sur_nom} from '../../function/function.js'
 
 import {modify_database, get_charact, change_perso, get_inventory} from '../../function/function_db.js'
-import { Input } from '@mui/material';
+
 
 export function Inventory_table ({inventory_table,SetInventoryTable}) {
 
@@ -41,9 +44,9 @@ export function Inventory_table ({inventory_table,SetInventoryTable}) {
 
         const inventory_table_sorted = trier_sur_nom(inventory_table);
 
-        // console.log("On check inventory table")
-        // console.log(inventory_table);
-        console.log("on check inventory table");
+        // // console.log("On check inventory table")
+        // // console.log(inventory_table);
+        // console.log("on check inventory table");
         let keys ={};
 
         if (inventory_table_sorted.length > 0) {
@@ -63,7 +66,7 @@ export function Inventory_table ({inventory_table,SetInventoryTable}) {
                         <th>Remove all</th>
                         
                     </tr>
-                    {inventory_table_sorted.map((ligne) => (<Inventory_line ligne ={ligne} key = {ligne.ID} SetInventoryTable={SetInventoryTable}/>))}
+                    {inventory_table_sorted.map((ligne) => (<Inventory_line ligne ={ligne} key = {ligne.nom + "/"+ ligne.ID} SetInventoryTable={SetInventoryTable}/>))}
                 </tbody>
             </table>
         )
@@ -77,16 +80,16 @@ export function Money_display ({inventory_table,SetInventoryTable}) {
 
     } else {
 
-        console.log("on check inventory_table")
-        console.log(inventory_table);
+        // console.log("on check inventory_table")
+        // console.log(inventory_table);
 
         let money_value = 0;
         for (let i = 0; i <inventory_table.length; i++ ){
             if(inventory_table[i].object_id == "money") {money_value = inventory_table[i].quantite}
         }
 
-        console.log("on check money_value")
-        console.log(money_value);
+        // console.log("on check money_value")
+        // console.log(money_value);
         
 
         const gold_value = Math.floor(money_value/400);
@@ -124,15 +127,13 @@ export function Inventory_line({ligne,SetInventoryTable}) {
 
             if (ligne.quantite < 1) {
             }else{ 
-                const object_id2 = ligne.object_id;
-                const object_data = find_object (object_id2)
 
                 return (
                     <tr key = {ligne.char_id + "_"+ ligne.object_id}>
-                            <td>{object_data.nom}</td>
+                            <td>{ligne.nom}</td>
                             <td>{ligne.quantite}</td>
-                            <td>{object_data.description}</td>
-                            <td>{object_data.valeur}</td>
+                            <td>{ligne.description}</td>
+                            <td>{ligne.valeur}</td>
                             <td> <button onClick={async() => {
                                 Remove_1(ligne.quantite, ligne.char_id, ligne.object_id, SetInventoryTable)
                             }}>Remove 1</button></td>
@@ -154,7 +155,7 @@ async function Remove_1(old_quantite,char_id,object_id, SetInventoryTable) {
 
     await modify_database(sql);
 
-    console.log(SetInventoryTable);
+    // console.log(SetInventoryTable);
     const inventory_response = await get_inventory(char_id);
     await SetInventoryTable(inventory_response);
 }
@@ -167,7 +168,7 @@ async function Remove_all(char_id,object_id, SetInventoryTable) {
 
     await modify_database(sql);
 
-    console.log(SetInventoryTable);
+    // console.log(SetInventoryTable);
     const inventory_response = await get_inventory(char_id);
     await SetInventoryTable(inventory_response);
 }
@@ -186,13 +187,13 @@ async function Add_item(old_quantite, added_quantity, object, char_id, already_e
 
     await modify_database(sql);
 
-    console.log(SetInventoryTable);
+    // console.log(SetInventoryTable);
     const inventory_response = await get_inventory(char_id);
     const inventory_table_sorted = trier_sur_nom(inventory_response);
     await SetInventoryTable(inventory_table_sorted);
 }
 
-function find_object (object_id) {   // une fonction qui prend en parametre l'id d'un objet et qui retourne un objet pour la table d'inventaire
+export function find_object (object_id) {   // une fonction qui prend en parametre l'id d'un objet et qui retourne un objet pour la table d'inventaire
 
     let object_result = {object_id: object_id, nom:"",description:"",valeur:0}
     let table =[];
@@ -255,10 +256,12 @@ export function Add_inventory_button ({inventory_table,SetInventoryTable,charact
        
     const [open, setOpen] = React.useState(false);
     const [table_data, SetTableData] = React.useState(trier_sur_nom(objectlist));
+    const [origin_table_data, SetOriginTableData] = React.useState(trier_sur_nom(objectlist));
     const [table_name, SetTablename] = React.useState("object")
     const [object, SetObject] = React.useState( {nom:"poudre de calcin",ID:"ingr1",description:"La poudre d'une plante des montagnes.",valeur:4,}); 
-    const [object_id, SetObjectID] = React.useState("conso1");
+    const [object_id, SetObjectID] = React.useState("ingr1");
     const [quantite, setQuantite] = React.useState(1);
+    const [Filter, setFilter] = React.useState("");   //L'input sur le choix d'item que le joueur est en train d'entré dans le input autofill
     
     if (inventory_table == null || charact_data == null ) {return (<div></div>)} else{
 
@@ -278,39 +281,64 @@ export function Add_inventory_button ({inventory_table,SetInventoryTable,charact
     
         const handleChange_Table = (event) => {
 
-            console.log("on lance handleChange_table")
+            // console.log("on lance handleChange_table")
             const test = event.target.value;
 
             if (test == "object") {  
                 SetTableData(objectlist2);
                 SetTablename("object");
+                SetOriginTableData(objectlist2);
+
             }else if (test == "arme") {
                 SetTableData(armelist2);
                 SetTablename("arme");
+                SetOriginTableData(armelist2);
+
             }else if (test == "equipement"){
                 SetTableData(equipementlist2);
                 SetTablename("equipement");
+                SetOriginTableData(equipementlist2);
             }
             
         };
 
+        const handlefilterchange = (event) => {
+            
+            const filtervalue = event.target.value;
+            setFilter(filtervalue);
+            let new_table = structuredClone(origin_table_data)
+            let new_table2 = []
+
+            for (let i in new_table) {
+                if (new_table[i].nom.includes(filtervalue)){
+                    new_table2.push(new_table[i])
+                }
+            }
+            console.log("On check la valeur du filtre")
+            console.log(filtervalue);
+            console.log("on check la table filtrer")
+            console.log(new_table2)
+
+            SetTableData(new_table2)
+        };
+
         const handleChange_Object = (event) => {
 
-            console.log("on lance handleChange_object")
+            // console.log("on lance handleChange_object")
             const test = event.target.value;
-            console.log(table_data);
-            console.log("on check le test dans change_object");
-            console.log(test);
+            // console.log(table_data);
+            // console.log("on check le test dans change_object");
+            // console.log(test);
             SetObjectID(test);
 
             for (let i = 0; i < table_data.length ; i++) {
                 if (test == table_data[i].ID){ 
 
-                    console.log("on check change_object");
-                    console.log(table_data[i]);
+                    // console.log("on check change_object");
+                    // console.log(table_data[i]);
 
                     SetObject(table_data[i])
-                    console.log("on a trouve le bon item et on change de nom")
+                    // console.log("on a trouve le bon item et on change de nom")
                 }
             }
         };
@@ -340,9 +368,11 @@ export function Add_inventory_button ({inventory_table,SetInventoryTable,charact
                     display: 'flex',
                     flexDirection: 'column',
                     m: 'auto',
-                    width: 300,
+                    width: 350,
                     }}
-                >   
+
+                >   <br/>
+                    <span>Item type</span>
                     <Select
                         id="add_inventory_select_table"
                         value={table_name}
@@ -354,16 +384,29 @@ export function Add_inventory_button ({inventory_table,SetInventoryTable,charact
                         <MenuItem value="equipement" key = "equipmentlist_key"> Equipement </MenuItem>
 
                     </Select>
-
+                    <br/>
+                    <span>filter by name</span>
+                    <Input
+                        id="inventory_item_filter"
+                        value={Filter}
+                        label="Filtrer"
+                        onChange={handlefilterchange}
+                        > 
+                    </Input>
+                    
+                    <br/>
+                    <span>Item choice</span>
                     <Select
                         id="add_inventory_select_item"
                         value={object_id}
                         label="potion"
                         onChange={handleChange_Object}
                         >
-                        {table_data.map((ligne) => (<MenuItem value={ligne.ID} key = {ligne.ID}> {ligne.nom} </MenuItem>))}
+                        {table_data.map((ligne) => (<MenuItem value={ligne.ID} key = {ligne.ID +"/"+ ligne.nom}> {ligne.nom} </MenuItem>))}
                     </Select>
 
+                    <br/>
+                    <span>Quantity</span>
                     <Input
                     id="add_inventory_select_quantity"
                     value={quantite}
@@ -376,7 +419,7 @@ export function Add_inventory_button ({inventory_table,SetInventoryTable,charact
                 </DialogContent>
                 <DialogActions>
                 <Button onClick={async() => { 
-                console.log(table_data);
+                // console.log(table_data);
                  }}> test</Button>
                 <Button onClick={async() => {
 
@@ -391,9 +434,9 @@ export function Add_inventory_button ({inventory_table,SetInventoryTable,charact
                         }
 
                         Add_item(old_quantite, quantite, object,char_id, already_exist, SetInventoryTable) 
-                        console.log("on check les valeurs entre dans add_item")
-                        console.log(object)
-                        console.log(char_id)
+                        // console.log("on check les valeurs entre dans add_item")
+                        // console.log(object)
+                        // console.log(char_id)
                         handleClose();
                     
                     }}> Add </Button>
@@ -411,11 +454,11 @@ export function Change_money_Button ({inventory_table,SetInventoryTable,charact_
     const [value_change, setValueAdded] = React.useState(0);
 
     if (inventory_table == null || charact_data == null ) {
-        console.log("on ne lance pas Change_money_Button");
+        // console.log("on ne lance pas Change_money_Button");
         return (<div></div>)
     }else{
 
-        console.log("on lance Change_money_Button");
+        // console.log("on lance Change_money_Button");
         const char_id = charact_data.char_id;
 
         let original_value = 0;
@@ -479,7 +522,7 @@ export function Change_money_Button ({inventory_table,SetInventoryTable,charact_
 
                     await modify_database(sql);
 
-                    console.log(SetInventoryTable);
+                    // console.log(SetInventoryTable);
                     const inventory_response = await get_inventory(char_id);
                     const inventory_table_sorted = trier_sur_nom(inventory_response);
                     await SetInventoryTable(inventory_table_sorted);
@@ -490,13 +533,13 @@ export function Change_money_Button ({inventory_table,SetInventoryTable,charact_
                 <Button onClick={async() => {
 
                     const new_value = Number(original_value) - Number(value_change);
-                    console.log("on check new new value")
-                    console.log(new_value);
+                    // console.log("on check new new value")
+                    // console.log(new_value);
                     const sql = ("UPDATE inventory SET quantite = " + new_value+" WHERE char_id = "+char_id+" AND object_id = \"money\";");
                             
                     await modify_database(sql);
 
-                    console.log(SetInventoryTable);
+                    // console.log(SetInventoryTable);
                     const inventory_response = await get_inventory(char_id);
                     const inventory_table_sorted = trier_sur_nom(inventory_response);
                     await SetInventoryTable(inventory_table_sorted);

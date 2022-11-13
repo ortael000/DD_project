@@ -1,0 +1,207 @@
+.bestiary_content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bestiary_filter{
+    display: flex;
+    flex-direction: row;
+}
+
+.opponent_filter_input{
+    margin: 5px;
+}
+
+.opponent_display {
+    border-top: solid 1px rgb(75, 145, 215);
+    margin-top: 20px;
+    padding: 10px;
+    margin-left: 20px;
+    width: 1470px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.opponent_display2{
+    width: 1300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.opponent_name {
+    font-size: 30px;
+    text-align: center;
+}
+
+.opponent_name1{
+    text-align: center;
+}
+
+.general_value_opponent {
+    width: 200px;
+    display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.pv_opponent {
+    padding-left: 10px;
+    height: 40px;
+    width: 90px;
+    display: table;
+    color: rgb(142, 14, 14) ;
+    margin : 2px;
+    font-size: 20px;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.pv_opponent_text {
+    padding-top: 5px;
+}
+
+.xp_opponent {
+    padding-top: 5px;
+    height: 50px;
+    width: 80px;
+    display: table;
+    color: rgb(14, 142, 46) ;
+    margin : 2px;
+    font-size: 20px;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.other_values_opponent {
+    height: 55px;
+    width: 50px;
+    display: table;
+    margin : 2px;
+    font-weight: bold;
+    padding: 5 px;
+    vertical-align: top;
+    font-size: 20px;
+    color: rgb(116, 85, 30);
+}
+
+.opponent_values_icone{
+    max-height: 60px;
+}
+
+
+
+.opponent_detail{
+    width: 1200px;
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.opponent_image0{
+    height: 320px;
+    border: solid 5px rgb(120, 31, 8);
+    margin: 3px;
+    margin-bottom: 0px;
+}
+
+.opponent_image2 {
+    border: solid 3px rgb(120, 31, 8);
+}
+
+.opponent_attack_table {
+    background-color: rgb(97, 18, 52);
+    padding: 2px;
+    font-size: 25px;
+    color: rgb(97, 18, 52);
+    max-width: 800px;
+}
+
+.opponent_attack_table th{
+    padding: 2px;
+    background-color: rgb(111, 31, 66);
+    color: white;
+    font-size: 15px; 
+    min-width: 60px;
+}
+
+.opponent_attack_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(111, 31, 66);  
+    font-size: 15px;    
+    padding: 4px;
+    text-align: center;
+}
+
+.opponent_loot_table {
+    background-color: rgb(228, 160, 15);
+    padding: 2px;
+    font-size: 25px;
+    color: rgb(228, 145, 19);
+    max-width: 800px;
+}
+
+.opponent_loot_table th{
+    padding: 2px;
+    background-color: rgb(228, 160, 15);
+    color: rgb(255, 255, 255);
+    font-size: 20px; 
+    min-width: 60px;
+}
+
+.opponent_loot_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(111, 31, 66);  
+    font-size: 15px;    
+    padding: 4px;
+    text-align: center;
+}
+    
+.money_loot_icone{
+    max-height: 25px;
+}
+
+.opponent_name1 {
+    border: solid 2px rgb(177, 180, 233);
+    background-color: rgb(247, 238, 238);
+    font-size: 28px;
+    color: rgb(32, 18, 145);
+    padding: 8px;
+    color: (32, 18, 145);
+}
+
+.opponent_name2 {
+    border: solid 2px rgb(155, 159, 234);
+
+}
+
+.opponent_name3{
+    border: solid 2px rgb(54, 41, 157);
+}
+
+
+
+
+.opponent_description1{
+    border: solid 2px rgb(177, 180, 233);
+    background-color: rgb(247, 238, 238);
+    width: 400px;
+    padding-top: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+    
+}
+
+.opponent_description2{
+    border: solid 2px rgb(155, 159, 234);
+    margin-top: 30px;
+}

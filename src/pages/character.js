@@ -24,6 +24,7 @@ export function Character() {   // le composant REACT qu'on envoie a APP
                     <option value="8">Nemeia</option>
                     <option value="10">Jean-Claude</option>
                     <option value="9">Azaram</option>
+                    <option value="13">Viktor</option>
                 </select>  
 
                 <button type='submit' id = "display_character_button" onClick={async() => {
@@ -92,7 +93,9 @@ export function Character() {   // le composant REACT qu'on envoie a APP
                     <Change_passive base_data ={charact_data} setInputValue = {setInputValue} setcharactValue = {setcharactValue}/>
                 </div>
                 <br/>
-                <Competence_Pratique_grid data = {character_final_values}/>
+                <div className="grid_button_display">
+                    <Competence_Pratique_grid data = {character_final_values}/>
+                </div>
                 <br/>
                 <div className="grid_button_display">
                     <Money_display inventory_table = {inventory_table} SetInventoryTable={SetInventoryTable}/>

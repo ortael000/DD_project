@@ -1,0 +1,81 @@
+.Add_buttons{
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.add_character_button{
+    margin-left: 20px;
+}
+
+.run_initiative_button{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.character_input_container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.figther_display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+    width: 70%;
+
+    border: solid 3px rgb(93, 140, 156);
+}
+
+.figther_display_dead{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+    width: 70%;
+    border: solid 3px rgb(93, 140, 156);
+    background-color: grey;
+}
+
+.figther_display_box{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 70px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.fighter_values_icone{
+    max-height: 40px;
+}
+
+.figther_name, .figther_ID{
+    height: 60px;
+    padding: 10px;
+    padding-top: 20px;
+    font-size: 25px;
+    color: rgb(37, 37, 142);
+}
+
+.fight_attack_button {
+    margin: 5px;
+}
+
+.pv_change_input{
+    width: 50x;
+}
+
+.pv_change_buttons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 20px;
+}
+
+.pv_change_buttons_2 {
+    margin: 5px;
+    width: 50px;
+    text-align: center;
+}

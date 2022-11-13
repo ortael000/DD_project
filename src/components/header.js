@@ -2,11 +2,12 @@ import '../Style/component.css';
 import banner_image from "../Assets/banner1.png";
 import React from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
+import '../Style/component.css'
 
 
 export function Header () {
     return (
-        <div>
+        <div className='header'>
             <Ruban_to_pages/>
             <Banner_home/>
         </div>
@@ -38,9 +39,7 @@ export function Banner_home () {
 
     return (
         <div className="ruban_home">
-        <img src = {banner_image} className='ruban_home_image'/>
-        <span className='page_title'>{"Donjon & Dragon Remastered"}</span>
-            
+            <span className='page_title'>Donjon & Dragon Remastered</span>
         </div>
     )
 

@@ -1,6 +1,13 @@
+.header{
+    width: 100%;;    
+}
+
 .character_content {
     width: 95%;
     margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .character_selection{
@@ -11,7 +18,7 @@
 
 .presentation_general_perso_1 {
     display: flex;
-    justify-content: center;
+    margin-left: 50px;
 }
 
 .presentation_general_perso_1_1 {
