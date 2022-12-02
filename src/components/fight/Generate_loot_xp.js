@@ -16,6 +16,8 @@ import Switch from '@mui/material/Switch';
 import { SignalCellularNullOutlined } from '@mui/icons-material';
 import Autocomplete from '@mui/material/Autocomplete';
 
+import '../../Style/fight/generate_loot_dialog.css'
+
 import pv_icone from "../../Assets/pv_icone.png"
 import mana_icone from "../../Assets/mana_icone.png"
 import ca_cac_icone from "../../Assets/CA_cac_icone.png"
@@ -38,7 +40,7 @@ import {armelist } from '../../data/armes.js';
 import {equipementlist } from '../../data/equipements.js';
 import {objectlist} from '../../data/objet.js'
 
-import {add_item_to_character} from "../../function/function_db.js"
+import {add_item_to_character,modify_database} from "../../function/function_db.js"
 import {find_object} from "../../components/character_component/inventory.js"
  
 export function Generate_loot({fighter_list, setFighterList}) {
@@ -66,7 +68,9 @@ export function Generate_loot({fighter_list, setFighterList}) {
         let total_money =0;
 
         for (let i in fighter_list) {
-            if ( fighter_list[i].type == "player"){} else{
+            if ( fighter_list[i].type == "player"){
+
+            } else{
                 const opponent_loot_table0 = [
                     Loot_Random (fighter_list[i].loot1,fighter_list[i].loot1_code,fighter_list[i].proba_loot1),
                     Loot_Random (fighter_list[i].loot2,fighter_list[i].loot2_code,fighter_list[i].proba_loot2),
@@ -99,7 +103,7 @@ export function Generate_loot({fighter_list, setFighterList}) {
     return (
         <div className='generate_loot_button' >
         <React.Fragment>
-        <Button size="medium" variant="contained" onClick={generate_loot_start}>
+        <Button color="error" size="medium" variant="contained" onClick={generate_loot_start}>
             Generate_loot
         </Button>
         <Dialog
@@ -121,7 +125,12 @@ export function Generate_loot({fighter_list, setFighterList}) {
                 }}
             >
             <div className='loot_dialog'> 
-                <div className='"money_display'>  <Money_display money_value ={MoneyLoot} fighter_list = {fighter_list}/> </div>
+                <div className='xp_display'>
+                    <Xp_display xp_value ={XpReward} fighter_list = {fighter_list}/> 
+                </div>
+                <div className='"money_display'>  
+                    <Money_display money_value ={MoneyLoot} fighter_list = {fighter_list}/>
+                </div>
                 {LootList.map((ligne) => (<Loot_line ligne={ligne}/>) )}
             </div>  
 
@@ -227,7 +236,7 @@ function Money_display ({money_value,fighter_list}) {
                     <img src = {copper_coin_icone} className='money_icone'/>
                 </span>
 
-                <Button onClick={async() => {
+                <Button className='share_to_player_button' onClick={async() => {
 
                     let player_table = [];
                     for (let i in fighter_list) {
@@ -238,10 +247,10 @@ function Money_display ({money_value,fighter_list}) {
                     console.log("on partage l'argent entre les joueurs presents")
                     console.log(player_table)
 
-                    const chared_money = Math.floor(money_value/(player_table.length))
+                    const shared_money = Math.floor(money_value/(player_table.length))
 
                     for (let i in player_table){
-                        add_item_to_character (chared_money,"money",player_table[i].ID)
+                        add_item_to_character (shared_money,"money",player_table[i].ID)
                     }
 
                 }}> Share to all player </Button>
@@ -249,7 +258,55 @@ function Money_display ({money_value,fighter_list}) {
             </div>
         )
     }
+} 
 
+function Xp_display ({xp_value,fighter_list}) {
+
+    if (xp_value == 0 ){
+        return (<div></div>)
+
+    } else {
+
+        // console.log("on check inventory_table")
+        // console.log(inventory_table);
+
+        // console.log("on check money_value")
+        // console.log(money_value);
+
+        return (
+            <div className='money_display'>
+                <span className='money_display_1'>
+                    <span className='xp_amount'> {xp_value} </span> 
+                    <span className='xp_icone'> XP</span>
+                </span>
+
+                <Button onClick={async() => {
+
+                    let player_table = [];
+                    for (let i in fighter_list) {
+                        if (fighter_list[i].type == "player") {
+                            player_table.push(fighter_list[i])
+                        }
+                    }
+                    console.log("on partage l'xp entre les joueurs presents")
+                    console.log(player_table)
+
+                    const shared_xp = Math.floor(xp_value/(player_table.length))
+
+                    for (let i in player_table){
+                        const base_data = await get_charact (player_table[i].ID);
+                        const current_xp = base_data.xp;
+                        const new_xp_value = current_xp + shared_xp;
+
+                        const sql = ("UPDATE character SET xp = \""+new_xp_value+"\" WHERE char_id = "+ player_table[i].ID + ";")
+                        modify_database(sql)
+                    }
+
+                }}> Share to all player </Button>
+
+            </div>
+        )
+    }
 } 
 
 

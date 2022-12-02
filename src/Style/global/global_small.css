@@ -1,0 +1,19 @@
+@media (max-width: 600px) {
+
+    .root_div{
+        width: 600px;
+     }
+
+    .link_to_page {
+        font: 12px "Fira Sans", serif;
+        font-weight: bold;
+    }
+
+    .page_title{
+        font-size: 14px;
+    }
+
+    .ruban_home{
+        margin-top: 8%;
+    }
+}

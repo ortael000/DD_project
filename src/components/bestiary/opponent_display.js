@@ -16,15 +16,14 @@ export function Opponent_display ({opponent_value}) {
 
     return (
             <div className="opponent_display">
-                
-
-
-
-
 
 
                 <div className="opponent_display2">
-                    <Opponent_general_value opponent_value = {opponent_value}/>
+                    <div className="Opponent_general_value_border2">
+                        <div className="Opponent_general_value_border1">
+                            <Opponent_general_value opponent_value = {opponent_value}/>
+                        </div>
+                    </div>
 
                     <div className="opponent_description3"> 
                         <div className="opponent_name3">
@@ -55,6 +54,8 @@ export function Opponent_display ({opponent_value}) {
                         <Opponent_loot_list opponent_value = {opponent_value}/>
                     </div>
                 </div>
+                <br/>
+                <br/>
             </div>
     )
 }

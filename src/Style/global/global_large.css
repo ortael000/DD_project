@@ -1,0 +1,15 @@
+@media (min-width: 1401px) {
+
+    .root_div{
+        width: 1550px;
+     }
+
+    .link_to_page {
+        font: 28px "Fira Sans", serif;
+        font-weight: bold;
+    }
+
+    .page_title{
+        font-size: 50px;
+    }
+}

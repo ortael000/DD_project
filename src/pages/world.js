@@ -1,11 +1,14 @@
 import React from "react";
-import '../Style/component.css';
+import '../Style/world/world_map.css';
+import { Interactive_map } from "../components/word/word_map";
 
 export function World() {
 
     return(
-        <div className= "world_content"> 
-                    This is the world page
+        <div className= "page_content">
+            <div className= "world_content"> 
+                        <Interactive_map/>
+            </div>
         </div>
     )
 }

@@ -3,7 +3,12 @@
 }
 
 .Object_filter1{
-    padding: 10px;
+    padding: 5px;
+    
+}
+
+.Button_group{
+    margin: 20px;
 }
 
 .input_filter {
@@ -50,7 +55,7 @@
 
 .arme_display_table th{
     padding: 2px;
-    background-color: rgb(195, 122, 70);
+    background-color: rgb(163, 64, 40);
     color: white;
     font-size: 15px;   
 }
@@ -62,7 +67,7 @@
 }
     
 .arme_display_table_title {
-    background-color: rgb(198, 92, 16);
+    background-color: rgb(120, 31, 9);
     padding: 2px;
     font-size: 25px;
     color: white;

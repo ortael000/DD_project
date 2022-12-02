@@ -48,29 +48,28 @@ export function Object_grid () {
         set_item_display_table(new_table);
     };
 
-    const HandleFilterTypeChange = (event) => {
-        const filtervalue = event.target.value;
+    const HandleClickObjet = () => {
+        set_full_display_table(objectlist);
+        set_item_display_table(objectlist);
+        set_text_filter("");
+        set_type_filter("objet")
+    }
 
-        if(filtervalue == "objet"){
-            set_full_display_table(objectlist);
-            set_item_display_table(objectlist);
-            set_text_filter("");
-            set_type_filter(filtervalue);
-            
-        } else if (filtervalue == "arme"){
-            set_full_display_table(armelist);
-            set_item_display_table(armelist);
-            set_text_filter("");
-            set_type_filter(filtervalue);
+    const HandleClickArme = () => {
+        set_full_display_table(armelist);
+        set_item_display_table(armelist);
+        set_text_filter("");
+        set_type_filter("arme");
+    }
 
-        } else if (filtervalue == "equipement"){
-            set_full_display_table(equipementlist);
-            set_item_display_table(equipementlist);
-            set_text_filter("");
-            set_type_filter(filtervalue);
-        } 
-        
-    };
+    const HandleClickEquipement= () => {
+        set_full_display_table(equipementlist);
+        set_item_display_table(equipementlist);
+        set_text_filter("");
+        set_type_filter("equipement");
+    }
+
+
     console.log("on check la liste full_display_table");
     console.log(full_display_table)
     console.log("on check la liste des objets a afficher")
@@ -81,16 +80,41 @@ export function Object_grid () {
 
             <div className='Object_filter'>
                 <div className='Object_filter1'>   
-                    Selectionner le type d'item a afficher:                 
-                    <select
-                        className="input_filter"
-                        id="add_inventory_select_item"
-                        value={type_filter}
-                        label="type_filter"
-                        onChange={HandleFilterTypeChange}
-                        >
-                        {type_table.map((ligne) => (<option value={ligne} key = {ligne +"/filtertype"}> {ligne} </option>))}
-                    </select>
+                    <div className="Buttongroup">    
+                    Selectionner le type d'item a afficher:  
+
+                        <span className="Button_group">         
+                            <Button
+                                className="filter_button"
+                                onClick={HandleClickObjet}
+                                variant="contained"
+                                color={(type_filter == "objet") ? "success" : "primary"}
+                                size ="small"
+                                >
+                            Objets
+                            </Button>
+
+                            <Button
+                                className="filter_button"
+                                onClick={HandleClickArme}
+                                variant="contained"
+                                color={(type_filter == "arme") ? "success" : "primary"}
+                                size ="small"
+                                >
+                            Armes
+                            </Button>
+
+                            <Button
+                                className="filter_button"
+                                onClick={HandleClickEquipement}
+                                variant="contained"
+                                color={(type_filter == "equipement") ? "success" : "primary"}
+                                size ="small"
+                                >
+                            Equipements
+                            </Button>
+                        </span> 
+                    </div>
                 </div>
 
                 <div className='Object_filter1'>   
@@ -156,11 +180,11 @@ function Item_grid ({table,type_filter}){
                             <th>max_deg</th>
                             <th>deg_carac1</th>
                             <th>deg_car2</th>
-                            <th>touch_carac1</th>
-                            <th>touch_carac2</th>
-                            <th>min_modifier</th>
-                            <th>max_modifier</th>
-                            <th>touch_modifier</th>
+                            <th>touch carac1</th>
+                            <th>touch carac2</th>
+                            <th>min modifier</th>
+                            <th>max modifier</th>
+                            <th>touch modifier</th>
                             <th>min_critique</th>
                             <th>Tier</th>
                             <th>valeur</th>

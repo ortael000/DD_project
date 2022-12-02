@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from 'react'
-import '../Style/component.css';
 import '../Style/admin.css';
 import {get_table,modify_database} from '../function/function_db.js'
 import {Table_display} from '../components/comp_admin.js'

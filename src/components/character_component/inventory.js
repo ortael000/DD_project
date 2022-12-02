@@ -1,4 +1,4 @@
-import '../../Style/component.css';
+
 import '../../Style/character/character.css'
 import '../../Style/character/grids.css'
 import '../../Style/character/character_title.css'
@@ -66,7 +66,7 @@ export function Inventory_table ({inventory_table,SetInventoryTable}) {
                         <th>Remove all</th>
                         
                     </tr>
-                    {inventory_table_sorted.map((ligne) => (<Inventory_line ligne ={ligne} key = {ligne.nom + "/"+ ligne.ID} SetInventoryTable={SetInventoryTable}/>))}
+                    {inventory_table_sorted.map((ligne,index) => (<Inventory_line ligne ={ligne} key = {ligne.nom + "/"+ ligne.ID + "/" + index} SetInventoryTable={SetInventoryTable}/>))}
                 </tbody>
             </table>
         )
@@ -402,7 +402,7 @@ export function Add_inventory_button ({inventory_table,SetInventoryTable,charact
                         label="potion"
                         onChange={handleChange_Object}
                         >
-                        {table_data.map((ligne) => (<MenuItem value={ligne.ID} key = {ligne.ID +"/"+ ligne.nom}> {ligne.nom} </MenuItem>))}
+                        {table_data.map((ligne) => (<MenuItem value={ligne.ID} key = {ligne.ID +"/"+ ligne.nom + "/" + charact_data.char_id}> {ligne.nom} </MenuItem>))}
                     </Select>
 
                     <br/>

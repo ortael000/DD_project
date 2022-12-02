@@ -1,0 +1,9 @@
+.xp_display {
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.money_display {
+    width: 450px;
+}

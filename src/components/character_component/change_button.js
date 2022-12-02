@@ -81,7 +81,7 @@ export function Change_equipment ({base_data,setInputValue,setcharactValue}) {
 
         return (
             <div className='change_equipment_buttons'>
-                {table.map((code) => (<Change_Character_Dialog base_data ={base_data} key={code} code={code} table = {filter_equipment(code, equipementlist2)} setcharactValue={setcharactValue} setInputValue={setInputValue} />))}
+                {table.map((code,index) => (<Change_Character_Dialog base_data ={base_data} key={("key = "+index +"/"+ code)} code={code} table = {filter_equipment(code, equipementlist2)} setcharactValue={setcharactValue} setInputValue={setInputValue} />))}
             </div>
         )
     }

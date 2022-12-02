@@ -452,7 +452,7 @@ export function find_equipment_bonus (equipement) {  // take the equipment objec
     return (bonus)
 }
 
-function find_passive_bonus (passif) {  // Cette fonction prend en parametre un object "passif" de la table des passifs et renvoie un texte avec les bonus differents de 0"
+export function find_passive_bonus (passif) {  // Cette fonction prend en parametre un object "passif" de la table des passifs et renvoie un texte avec les bonus differents de 0"
 
     let bonus = "";
 
@@ -605,7 +605,7 @@ export function trier_sur_initiative (table) {
     return (table);
 }
 
-function find_passiv_touch_bonus (weapon_type,passive1,passive2,passive3,passive4) {  // a function that take into parameter the type of a weapon( "cac" or "distance")and the passives and return the touch bnus from the character passives
+export function find_passiv_touch_bonus (weapon_type,passive1,passive2,passive3,passive4) {  // a function that take into parameter the type of a weapon( "cac" or "distance")and the passives and return the touch bnus from the character passives
     let bonus = 0;
     if (weapon_type == "cac") {
         bonus = passive1.toucher_cac + passive2.toucher_cac + passive3.toucher_cac + passive4.toucher_cac

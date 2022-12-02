@@ -92,7 +92,7 @@ export function Add_fighter_button ({fighter_list, setFighterList}) {
     return (
         <div className='add_figther_button' >
         <React.Fragment>
-        <Button size="medium" variant="contained" onClick={handleClickOpen}>
+        <Button color="error" size="medium" variant="contained" onClick={handleClickOpen}>
             Add opponent
         </Button>
         <Dialog
@@ -179,11 +179,10 @@ export function Add_character_button ({fighter_list, setFighterList}) {
         setCharacterChoice(new_choice)
     };
 
-
     return (
         <div className='add_character_button' >
         <React.Fragment>
-        <Button size="medium" variant="contained" onClick={handleClickOpen}>
+        <Button color="error" size="medium" variant="contained" onClick={handleClickOpen}>
             Add player
         </Button>
         <Dialog
@@ -224,6 +223,7 @@ export function Add_character_button ({fighter_list, setFighterList}) {
             <Button onClick={async() => {
 
                  const base_data = await get_charact (character_choice.char_id);
+                 console.log("on recupere les données de base du perso")
                  setCharacterBaseData(base_data)
 
                  const character_final_data = calculate_character_values(base_data)
@@ -480,7 +480,7 @@ export function Sort_by_initiative({fighter_list, setFighterList}) {
 
     return(
         <div className='run_initiative_button'>
-            <Button size="medium" variant="contained" onClick={() => {
+            <Button color="error" size="medium" variant="contained" onClick={() => {
                 
                 console.log("On lance let jes d'initiatives et on check Figther list avant")
                 console.log(fighter_list)

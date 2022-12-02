@@ -1,0 +1,68 @@
+
+.section {
+  margin-top: 1%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.intro_section_1{
+  width: 60%;
+
+  background-image: url("../../Assets/homepage/image3.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+
+
+
+
+.pres_image1 {
+  margin-top: 1%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 3%;
+  width: 90%;
+  padding: 1%;
+  border: solid 3px rgb(116, 44, 44);
+}
+
+
+.pres_image2{
+  width: 90%;
+}
+
+
+
+
+.section_text{
+  margin: 4%;
+  padding: 1%;
+  background-color: rgba(46, 46, 49, 0.5);
+  color: rgb(255, 255, 255);
+  width: 90%;
+}
+
+.character_section_text{
+  background-image: url("../../Assets/homepage/image6.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+}
+
+.fight_section_text{
+  background-image: url("../../Assets/homepage/image5.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 90%;
+}
+
+.world_section_text{
+  background-image: url("../../Assets/homepage/image7.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+}
+

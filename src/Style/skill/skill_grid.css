@@ -1,0 +1,51 @@
+.active_competence_display_table{
+    max-width: 1450px;
+    margin: 10px;
+    font-size: 14px;
+}
+
+.active_competence_display_table_title{
+    background-color: rgb(21, 40, 115);
+    color: white;
+    font-size: 18px;
+    padding: 3px;
+}
+
+.active_competence_display_table th{
+    padding: 2px;
+    background-color: rgb(30, 75, 153);
+    color: white;
+    font-size: 14px;   
+}
+
+.active_competence_display_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(24, 60, 123);        
+}
+
+.passive_competence_display_table{
+    max-width: 1450px;
+    margin: 10px;
+    font-size: 14px;
+}
+
+.passive_competence_display_table_title{
+    background-color: rgb(55, 16, 110);
+    color: white;
+    font-size: 18px;
+    padding: 3px;
+}
+
+.passive_competence_display_table th{
+    padding: 2px;
+    background-color: rgb(67, 46, 110);
+    color: white;
+    font-size: 14px;   
+}
+
+.passive_competence_display_table td{
+    padding: 2px;
+    background-color: rgb(210, 219, 218);
+    color: rgb(45, 4, 95);        
+}

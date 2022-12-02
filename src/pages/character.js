@@ -1,6 +1,9 @@
 import React from "react";
-import '../Style/component.css';
 import '../Style/character/character.css'
+import '../Style/character/character_small.css'
+import '../Style/character/character_medium.css'
+import '../Style/character/character_large.css'
+
 import { useState } from 'react'
 
 import {get_charact,get_inventory } from "../function/function_db.js";
@@ -16,7 +19,7 @@ export function Character() {   // le composant REACT qu'on envoie a APP
     const [inventory_table, SetInventoryTable] = useState(null)  // permet de déclarer l'état initial pour inventory_table et la fonction correspondante pour la modifier
 
     return(
-        <div className= "character_content"> 
+        <div className= "page_content"> 
 
             <div className="character_selection" >
                 <select id="character_input" >
@@ -52,8 +55,10 @@ export function Character() {   // le composant REACT qu'on envoie a APP
                     <div className="presentation_general_perso_1_1">
                         <Perso_title data ={character_final_values}/>
                         <div className="general_value"> 
-                            <General_values1 data ={character_final_values} charact_data={charact_data} setInputValue={setInputValue} setcharactValue={setcharactValue}/>
-                            <General_values2 data ={character_final_values}/>
+                            <div className="general_value0">
+                                <General_values1 data ={character_final_values} charact_data={charact_data} setInputValue={setInputValue} setcharactValue={setcharactValue}/>
+                                <General_values2 data ={character_final_values}/>
+                            </div>
                             <div className="caracteristic_grid1"> 
                                 <Caracteristic_grid data = {character_final_values}/> 
                                 <div className="caracteristic_grid2"> 

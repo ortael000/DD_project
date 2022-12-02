@@ -1,13 +1,12 @@
-.bestiary_content{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .bestiary_filter{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+}
+
+.bestiary_content1{
+    width: 1470px;
+
 }
 
 .opponent_filter_input{
@@ -15,18 +14,17 @@
 }
 
 .opponent_display {
-    border-top: solid 1px rgb(75, 145, 215);
     margin-top: 20px;
     padding: 10px;
     margin-left: 20px;
-    width: 1470px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .opponent_display2{
-    width: 1300px;
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -41,7 +39,15 @@
     text-align: center;
 }
 
+.Opponent_general_value_border1{
+    border: solid 2px rgb(9, 35, 98);
+    background-color: rgb(52, 75, 129);
+    padding: 4px;
+}
+
 .general_value_opponent {
+    border: solid 2px rgb(9, 37, 100);
+    background-color: rgb(229, 226, 211);
     width: 200px;
     display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -105,21 +111,29 @@
 
 }
 
+.opponent_description3{
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
 .opponent_image0{
-    height: 320px;
-    border: solid 5px rgb(120, 31, 8);
+    max-height: 360px;
+    border: solid 3px rgb(9, 35, 98);
     margin: 3px;
     margin-bottom: 0px;
 }
 
 .opponent_image2 {
-    border: solid 3px rgb(120, 31, 8);
+    border: solid 3px rgb(9, 35, 98);
+    background-color: rgb(52, 75, 129);
+    padding: 3px;
+
 }
 
 .opponent_attack_table {
     background-color: rgb(97, 18, 52);
     padding: 2px;
-    font-size: 25px;
+    font-size: 28px;
     color: rgb(97, 18, 52);
     max-width: 800px;
 }
@@ -144,7 +158,7 @@
 .opponent_loot_table {
     background-color: rgb(228, 160, 15);
     padding: 2px;
-    font-size: 25px;
+    font-size: 28px;
     color: rgb(228, 145, 19);
     max-width: 800px;
 }
@@ -171,37 +185,32 @@
 }
 
 .opponent_name1 {
-    border: solid 2px rgb(177, 180, 233);
-    background-color: rgb(247, 238, 238);
-    font-size: 28px;
-    color: rgb(32, 18, 145);
+    border: solid 2px rgb(9, 35, 98);
+    background-color: rgb(229, 236, 251);
+    font: 28px "Fira Sans", serif;
+    font-weight: bold;
+    color: rgb(17, 37, 102);
     padding: 8px;
     color: (32, 18, 145);
 }
 
-.opponent_name2 {
-    border: solid 2px rgb(155, 159, 234);
-
-}
-
 .opponent_name3{
-    border: solid 2px rgb(54, 41, 157);
+    border: solid 3px rgb(9, 35, 98);
+    background-color: rgb(155, 159, 234);
+    padding: 2px;
 }
 
 
 
 
 .opponent_description1{
-    border: solid 2px rgb(177, 180, 233);
-    background-color: rgb(247, 238, 238);
+    margin-top: 30px;
+    border: solid 2px rgb(54, 41, 157);
+    background-color: rgb(229, 236, 251);
     width: 400px;
     padding-top: 10px;
     text-align: center;
     padding-bottom: 10px;
+    font: 20px "Fira Sans", serif;
     
-}
-
-.opponent_description2{
-    border: solid 2px rgb(155, 159, 234);
-    margin-top: 30px;
 }

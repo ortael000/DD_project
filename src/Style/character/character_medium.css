@@ -1,0 +1,66 @@
+@media (min-width: 601px) and (max-width: 1400px) {
+
+    .page_content{
+        width: 1100px;
+        margin-left: 10px;
+    }
+
+    .presentation_general_perso_1 {
+        display: flex;
+        flex-direction: column;
+        margin-left: 0%;
+        width: 80%;
+    }
+
+    .general_value{
+        margin-top: 5%;
+        margin-bottom: 10%;
+    }
+
+    .other_values_icone{
+        max-height: 50px;
+    }
+
+    .general_value {
+        grid-template-columns: repeat(2, 1fr);
+        display: flex;
+        flex-direction: column;
+        height:90% ;
+    }
+
+    .grid_button_display caption {
+        font-size: 20px;
+    }
+    
+    .grid_button_display th {
+        font-size: 12px;
+    }
+    
+    .grid_button_display td {
+        font-size: 14px;
+    }
+
+    .border_portrait_1 {
+        border: solid 2px #9c5224;
+        padding: 2px;
+        height: 458px;
+        width: 408px;
+    }
+
+    .change_character_button{
+        width: 90px;
+    }
+
+    .grid_button_display{
+        width: 90%;
+    }
+
+    .competence_table{
+        max-width: 90%;
+    }
+
+    .passif_table{
+        max-width: 90%;
+    }
+    
+}

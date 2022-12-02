@@ -1,0 +1,40 @@
+canvas {
+    width: 1300;
+    height: 1000px;
+}
+
+.world_content{
+    width: 1500px;
+    margin: 6px;
+    display: flex;
+    justify-content: center;
+}
+
+.Interactive_map_container0 {
+    border: solid rgb(199, 151, 20) 4px;
+}
+
+.Interactive_map_container1 {
+    border: solid rgb(188, 121, 14) 4px;
+}
+
+.Interactive_map_container2 {
+    width: 1300px;
+    height: 1000px;
+    border: solid rgb(174, 102, 8) 4px;
+}
+
+.current_map{
+    width: 100%;
+}
+
+.map_filter{
+    width: 150px;
+    height: 30px;
+    margin: 5px;
+}
+
+.test_click_map{
+    border: solid 3px rgb(255, 0, 247);
+    background-color: red;
+}

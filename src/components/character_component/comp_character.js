@@ -1,7 +1,11 @@
-import '../../Style/component.css';
 import '../../Style/character/character.css'
 import '../../Style/character/grids.css'
 import '../../Style/character/character_title.css'
+
+import React, { useRef, useEffect } from 'react'
+
+import * as PIXI from 'pixi.js'
+import { Application, Assets, Sprite } from 'pixi.js';
 
 import Button from '@mui/material/Button';
 
@@ -10,6 +14,8 @@ import jean_claude_protrait from "../../Assets/jean_claude_portrait.png"
 import kokoro_portrait from "../../Assets/kokoro_portrait.png"
 import nemeia_portrait from "../../Assets/nemeia_portrait.png"
 import viktor_portrait from "../../Assets/viktor_portrait.png"
+import {kokoro_rire_array } from '../../Assets/animation/Kokoro_rire/kokoro_rire.js'
+import {jean_claude_fire_array} from "../../Assets/animation/Jean-Claude/Jeanclaude_fire.js"
 
 import pv_icone from "../../Assets/pv_icone.png"
 import mana_icone from "../../Assets/mana_icone.png"
@@ -22,6 +28,7 @@ import perception_icone from "../../Assets/perception_icone.png"
 
 import {Add_caracteristic,point_to_attribute} from '../../function/function.js'
 import {Change_HP_Button, Change_mana_Button} from "../character_component/change_button.js"
+import {animate_temp} from "../../function/animation_function.js"
  
 export function Weapon_grid ({data}) {
 
@@ -338,8 +345,8 @@ export function Competence_grid ({data}) {
                            <th> Element </th>
                            <th> Cout en mana</th>
                            <th> porté</th>
-                           <th> Degat_min</th>
-                           <th> Degat_max</th>
+                           <th> Degat min</th>
+                           <th> Degat max</th>
                            <th> Toucher</th>
                            <th> Description</th>
                            
@@ -647,38 +654,70 @@ export function Competence_Pratique_grid ({data}) {
 }
 
 export function Image_Perso ({data}) {
-    if (data == null) {
-        // {console.log("pas encore de donnée a exploiter")}
-         return (
-         <div id = "div005"> </div>
-         )
-    }else{
-        let image = {};
-
-        let nom = data.character_general_values.nom;
-       // console.log("On test le nom pour l'image" , nom)
-
-        if (nom == "Kokoro") {
-            image = kokoro_portrait;
-        } else if (nom == "Nemeia") {
-            image = nemeia_portrait;
-        } else if (nom == "Jean-Claude") {
-            image = jean_claude_protrait;
-        } else if (nom == "Azaram") {
-             image = azaram_portrait;
-        } else if (nom == "Viktor") {
-            image = viktor_portrait;
-        }
+    
+    React.useEffect(() => {     // UseEffect permet de definir une fonction qui se relance quand l'un des objets passée en deuxieme parametre est modifié
         
+        let nom = "kokoro";
+    
+        if (data == null) {
+            // {console.log("pas encore de donnée a exploiter")}
+        }else {nom = data.character_general_values.nom }
 
-        return ( 
-            <div className='border_portrait_1'> 
-                <div className='border_portrait_2'>
-                    <img src = {image} alt = "image du personnage" className='image_perso'/>
-                </div>
+        const div_for_canvas = document.getElementById("border_portrait_2");
+
+        const hauteur = 450;
+        const largeur = 400;
+
+        const app = new PIXI.Application({
+            width: largeur,
+            height: hauteur,
+        });
+
+        app.view.style.width = "400px";
+        app.view.style.height = "450px";
+
+        div_for_canvas.innerHTML = "";
+        div_for_canvas.appendChild(app.view);
+
+        let sprites_array = [];
+
+        if (nom == "Kokoro") {  
+
+            animate_temp(kokoro_portrait,kokoro_rire_array,app,hauteur,largeur,kokoro_rire_array.length,5,3)
+
+        } else if(nom == "Nemeia") {
+                console.log("on veut mettre l'image de nemeia")
+                let sprite = PIXI.Sprite.from(nemeia_portrait);
+                app.stage.addChild(sprite);
+                sprite.width = largeur;
+                sprite.height = hauteur;
+
+        }else if (nom == "Azaram") {
+                let sprite = PIXI.Sprite.from(azaram_portrait);
+                app.stage.addChild(sprite);
+                sprite.width = largeur;
+                sprite.height = hauteur;
+
+        }else if (nom == "Jean-Claude") {
+                animate_temp(jean_claude_protrait,jean_claude_fire_array,app,hauteur,largeur,jean_claude_fire_array.length,5,1)
+
+        }else if (nom == "Viktor") {
+                let sprite = PIXI.Sprite.from(viktor_portrait);
+                app.stage.addChild(sprite);
+                sprite.width = largeur;
+                sprite.height = hauteur;
+        }
+            
+    });
+
+    return ( 
+
+        <div className='border_portrait_1'> 
+            <div className='border_portrait_2' id ='border_portrait_2' >
+
             </div>
-            )
-     }
+        </div>
+    )
 }
 
 export function Point_a_attribuer ({base_data, setInputValue, calculate_character_values, setcharactValue}) {  // une fonction qui prend en parametre les parametres de base d'un personnage 
